@@ -1,24 +1,41 @@
-import React from 'react';
-import logo from '../../assets/img/logo.svg';
-import Greetings from '../../containers/Greetings/Greetings';
+import React, { useState, useEffect } from 'react';
 import './Popup.css';
 
 const Popup = () => {
+  const [apiKey, setApiKey] = useState('');
+
+  useEffect(() => {
+    chrome.storage.local.get(['openai_api_key'], (result) => {
+      console.log('Retrieved API Key from storage:', result.openai_api_key); // Debugging line
+      if (result.openai_api_key) {
+        setApiKey(result.openai_api_key);
+      }
+    });
+  }, []);
+
+  const handleInputChange = (event) => {
+    setApiKey(event.target.value);
+  };
+
+  const handleSave = () => {
+    chrome.storage.local.set({ openai_api_key: apiKey }, () => {
+      console.log('API Key saved in storage:', apiKey);
+    });
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/pages/Popup/Popup.jsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React!
-        </a>
+        <h1>OpenAI API Key</h1>
+        <label htmlFor="api-key-input">OpenAI API Key:</label>
+        <input
+          type="text"
+          id="api-key-input"
+          value={apiKey}
+          onChange={handleInputChange}
+          placeholder="Enter your OpenAI API Key"
+        />
+        <button onClick={handleSave}>Save API Key</button>
       </header>
     </div>
   );

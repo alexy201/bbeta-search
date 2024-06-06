@@ -1,10 +1,5 @@
 const { OpenAI } = require("openai");
 
-const openai = new OpenAI({
-    apiKey: 'sk-proj-fkemmucgLWndNEHd6gcfT3BlbkFJAdEUura76Mf0HQySUUb4',
-    dangerouslyAllowBrowser: true
-});
-
 const search_custom_functions = [
     {
         type: "function",
@@ -67,7 +62,11 @@ const search_custom_functions = [
 ]
 
 
-export default async function buildFilter(message) {
+export default async function buildFilter(message, api_key) {
+    const openai = new OpenAI({
+        apiKey: api_key,
+        dangerouslyAllowBrowser: true
+    });
     let messages = [
         { role: "system", content: "You are acting as a filter-generator for search results. Analyze the prompt carefully to determine the right parameters for the filter." },
         { role: "user", content: message },
