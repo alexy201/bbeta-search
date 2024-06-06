@@ -26,7 +26,7 @@ const Popup = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>OpenAI API Key</h1>
+        <h1>Settings</h1>
         <label htmlFor="api-key-input">OpenAI API Key:</label>
         <input
           type="text"
