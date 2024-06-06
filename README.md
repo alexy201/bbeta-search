@@ -6,7 +6,7 @@
 
 This is a lightweight Chrome Extension that allows for natural language search on the Linkedin website. Simply input a prompt in the search bar and click the green "Perform Fuzzy Search" button. You also have the option of not using fuzzy search and further tuning your results by just searching as you normally would.
 
-<img src="src/assets/img/readme.png" width="400"/>
+<img src="src/assets/img/readme.png" width="800"/>
 
 ## Installing and Running
 
