@@ -52,7 +52,7 @@ const search_custom_functions = [
                     },
                     keywords: {
                         "type": "string",
-                        'description': 'Extract other keywords from the prompt that are not names, titles/positions, locations, companies, or schools. Try not to extract whole phrases, but individual words'
+                        'description': 'Extract other keywords from the prompt that are not names, titles/positions, locations, companies, or schools. Try not to extract whole phrases, but individual words. Feel free to also leave this empty if the remaining words are not important.'
                     }
                 },
                 required: ['keywords']
