@@ -98,9 +98,11 @@ function buildLinkedInSearchURL(json_args) {
     if ('currentCompany' in json_args) params.append("company", json_args['currentCompany']);
     if ('firstName' in json_args) params.append("firstName", json_args['firstName']);
     if ('lastName' in json_args) params.append("lastName", json_args['lastName']);
-    if ('school' in json_args) params.append("schoolFreetext", json_args['school']);
+    if ('school' in json_args) params.append("schoolFreetext", `"${json_args['school']}"`);
     if ('title' in json_args) params.append("titleFreeText", json_args['title']);
     if ('keywords' in json_args) params.append("keywords", json_args['keywords']);
+
+    console.log(`${baseURL}?${params.toString()}`)
 
     return `${baseURL}?${params.toString()}`;
 }

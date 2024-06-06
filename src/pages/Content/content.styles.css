@@ -1,0 +1,23 @@
+#filterButton {
+    border: 1px solid #ccc;
+    border-color: green;
+    background: white;
+    /* Light green shade */
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 8px;
+    display: block;
+    margin: 10px auto;
+    transition: background 0.3s;
+    font-weight: 600;
+    /* Semibold */
+    color: green;
+    /* Green color */
+}
+
+#filterButton:hover {
+    background: green;
+    /* Darker green shade on hover */
+    color: white;
+}
