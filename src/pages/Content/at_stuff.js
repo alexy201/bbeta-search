@@ -50,6 +50,17 @@ const search_custom_functions = [
                         },
                         'description': 'Names of the languages that search results should know'
                     },
+                    network: {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        'description': `Linkedin connection distance that the user is looking for.
+Include the string "F" if they want first connnections.
+Include the string "S" if they want second connnections.
+Include the string "O" if they want third + connections.
+You may include multiple strings or none.`
+                    },
                     keywords: {
                         "type": "string",
                         'description': 'Extract other keywords from the prompt that are not names, titles/positions, locations, companies, or schools. Try not to extract whole phrases, but individual words. Feel free to also leave this empty if the remaining words are not important.'
@@ -100,6 +111,7 @@ function buildLinkedInSearchURL(json_args) {
     if ('school' in json_args) params.append("schoolFreetext", `"${json_args['school']}"`);
     if ('title' in json_args) params.append("titleFreeText", json_args['title']);
     if ('keywords' in json_args) params.append("keywords", json_args['keywords']);
+    if ('network' in json_args) params.append("network", JSON.stringify(json_args['network']));
 
     console.log(`${baseURL}?${params.toString()}`)
 
